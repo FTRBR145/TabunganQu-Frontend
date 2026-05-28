@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+/* ─── Design Tokens ─────────────────────────────── */
+:root {
+  --tq-primary: #10b981;
+  --tq-primary-dim: #059669;
+  --tq-bg: #1a211c;
+  --tq-bg-alt: #1d251f;
+  --tq-card: rgba(255, 255, 255, 0.045);
+  --tq-card-inner: rgba(255, 255, 255, 0.06);
+  --tq-border: rgba(255, 255, 255, 0.08);
+  --tq-text: rgba(255, 255, 255, 0.9);
+  --tq-text-mute: rgba(255, 255, 255, 0.45);
+  --tq-radius: 14px;
+  --tq-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  --tq-shadow-md: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* ─── Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* ─── Shared card/field utilities ───────────────── */
+.tq-card {
+  background: var(--tq-card);
+  border: 1px solid var(--tq-border);
+  border-radius: var(--tq-radius);
+  box-shadow: var(--tq-shadow);
+  backdrop-filter: blur(2px);
+}
+
+.tq-card-inner {
+  background: var(--tq-card-inner);
+  border: 1px solid var(--tq-border);
+  border-radius: 10px;
+}
+
+.tq-field {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--tq-border);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 13px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+  outline: none;
+}
+.tq-field:focus {
+  border-color: rgba(16, 185, 129, 0.55);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+}
+.tq-field::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.tq-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px !important;
+}
+.tq-select option {
+  background: #1e2b22;
+  color: #fff;
+}
+
+/* ─── Badges ─────────────────────────────────────── */
+.tq-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.tq-badge-income {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+.tq-badge-expense {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+}
+.tq-badge-savings {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+}
+
+/* ─── Animations ─────────────────────────────────── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes progressFill {
+  from {
+    width: 0;
+  }
+}
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+.animate-slide-in-up {
+  animation: slideInUp 0.4s ease-out forwards;
+}
+.animate-slide-in-right {
+  animation: slideInRight 0.4s ease-out forwards;
+}
+.animate-scale-in {
+  animation: scaleIn 0.2s ease-out forwards;
+}
+.animate-toast-slide-in {
+  animation: toastSlideIn 0.3s ease forwards;
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.animate-pulse-dot {
+  animation: pulse-dot 1.5s ease-in-out infinite;
+}
